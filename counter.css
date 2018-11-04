@@ -1,0 +1,17 @@
+.counter {
+  display: inline-block;
+  border: 1px solid #ddd;
+  width: 30%;
+  height: 100px;
+}
+.counter header {
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 1.2em;
+  text-align: center;
+}
+.counter .counter-display {
+  display: inline-block;
+  width: 40%;
+  text-align: center;
+}

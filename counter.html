@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Simple modular up-down counter</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="./counter.css" />
+</head>
+
+<body>
+  <h1>
+    Simple counter, using ES6 classes
+  </h1>
+  <div class="content-pane">
+    <div class="description">
+      <h2>
+        Description:
+      </h2>
+      <p>So I wanted to work on the pomodoro timer for FCC, but I wanted to change a few things. First, I want to build it to be library-agnostic, as much as possible. Second, I want to use "modern" javascript, as in ECMAScript6, as much as possible (or
+        where really feasible). Third, I wanted to make it more component based.</p>
+      <p>To that third point, I really want to start building components that follow what I'm starting to see as the three rules: Encapsulation, Delegation and Communication. Here's how I view those:</p>
+      <ul>
+        <li><strong>Encapsulation:</strong> Each component should be completely isolated from its siblings or ancestors.</li>
+        <li><strong>Delegation:</strong> Each component should be able to delegate activities to its own descendants.</li>
+        <li><strong>Communication:</strong> Each component should communicate with its ancestors.</li>
+      </ul>
+      <p>So here's the second of a few components: a Counter class.</p>
+
+      Take a look at the <a href="./timer.js" target="_blank">timer source</a>, to see how it works!
+    </div>
+    <div id="counter1" class="counter"></div>
+
+  </div>
+  <div class="action-buttons">
+    <button class='reset-btn'>
+      Reset
+    </button>
+  </div>
+  <script src="counter.js"></script>
+  <script>
+    // Create an instance of our Timer component. It is customizeable, and takes callbacks!
+    let breakCounter = new Counter({
+      title: "Break:",
+      id: 'break',
+      min: 0,
+      max: 15,
+      default: 5
+    });
+    let sessionCounter = new Counter({
+      title: "Session:",
+      id: 'session',
+      min: 15,
+      max: 60,
+      default: 30,
+      onChange: function(){
+        console.log("You changed the session length. It is now "+sessionCounter.count+" minutes.");
+      }
+    });
+
+    // Of course, we want to see it doing something. Let's get its dom node and put that in.
+    let counterContainer = document.querySelector("#counter1");
+    counterContainer.appendChild(breakCounter.domEl);
+    counterContainer.appendChild(sessionCounter.domEl);
+    
+    // Let's create a reset!
+    let resetBtn = document.querySelector('.reset-btn');
+    resetBtn.addEventListener("click", function(){
+      // The counter class has a reset function, which simply restores the display to
+      //  the default value. Let's call that on both counters.
+      breakCounter.reset();
+      sessionCounter.reset();
+    })
+  </script>
+
+</body>
+
+</html>
