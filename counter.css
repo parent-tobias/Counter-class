@@ -1,7 +1,7 @@
 .counter {
   display: inline-block;
   border: 1px solid #ddd;
-  width: 30%;
+  width: 33%;
   height: 100px;
 }
 .counter header {
@@ -12,6 +12,6 @@
 }
 .counter .counter-display {
   display: inline-block;
-  width: 40%;
+  width: 35%;
   text-align: center;
 }

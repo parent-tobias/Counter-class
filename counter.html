@@ -4,6 +4,7 @@
 <head>
   <title>Simple modular up-down counter</title>
   <meta charset="utf-8">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./counter.css" />
 </head>
 
@@ -42,9 +43,10 @@
     let breakCounter = new Counter({
       title: "Break:",
       id: 'break',
-      min: 0,
+      min: 1,
       max: 15,
-      default: 5
+      default: 5,
+      onReset: () => { console.info("Hey! You reset me! I'm going from "+breakCounter.count+" to 5" )}
     });
     let sessionCounter = new Counter({
       title: "Session:",
